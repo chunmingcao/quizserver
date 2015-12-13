@@ -1,0 +1,41 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+#wrapper {
+	padding-left:312px;
+	position:relative;
+}
+
+#questionList table{
+	background: #CCC;
+}
+
+#questionList table th {
+	background:#EEE;
+	font-weight:600;
+	padding:10px 20px;
+	text-align:center;
+}
+
+#questionList table td {
+	background:#FFF;
+	font-weight:600;
+	padding:5px 10px;
+	text-align:center;
+}
+
+#questionoptions {
+	width:250px;
+	position:absolute;
+	top:0; left:0;
+}
+
+#addQuestion fieldset input{
+	width: 80%;
+}

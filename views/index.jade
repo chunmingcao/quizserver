@@ -1,0 +1,67 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+
+  // Wrapper
+  #wrapper
+
+    // Question Options
+    #questionoptions
+       h2 Question Options
+       p
+            strong A:
+            |  <span id='optionA'></span>
+            br
+            strong B:
+            |  <span id='optionB'></span>
+            br
+            strong C:
+            |  <span id='optionC'></span>
+            br
+            strong D:
+            |  <span id='optionD'></span>
+            br
+            strong E:
+            |  <span id='optionE'></span>
+            br
+            strong Answer:
+            |  <span id='answer'></span>
+
+    // /Question Options
+
+
+    // QUESTION LIST
+    h2 Question List
+    #questionList
+            table
+                thead
+                    th Question
+                    th Delete
+                tbody
+    // /QUESTION LIST
+
+
+    // ADD QUESTION
+    h2 Add Question
+    #addQuestion
+            fieldset
+                input#inputQuestion(type='text', placeholder='Username')
+                br
+                input#inputOptionA(type='text', placeholder='OptionA')
+                br
+                input#inputOptionB(type='text', placeholder='OptionB')
+                br
+                input#inputOptionC(type='text', placeholder='OptionC')
+                br
+                input#inputOptionD(type='text', placeholder='OptionD')
+                br
+                input#inputOptionE(type='text', placeholder='OptionE')
+                br
+                input#inputAnswer(type='select', placeholder='Answer')
+                br
+                button#btnAddQuestion Add Question
+    // /ADD QUESTION
+        
+  // /WRAPPER

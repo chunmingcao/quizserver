@@ -36,7 +36,7 @@ app.use(function(req, res, next){
 app.use('/', routes);
 app.use('/users', users);
 app.use('/questions', qustions);
-console.log("###########44444444444444444444#################");
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
@@ -68,5 +68,5 @@ app.use(function(err, req, res, next) {
   });
 });
 
-
+console.log("###########44444444444444444444#################");
 module.exports = app;

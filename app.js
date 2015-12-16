@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 
 
 var monk = require('monk');
-var db = monk('localhost:27017/quizdb');
+var db = monk('mongodb://test:test@ds033175.mongolab.com:33175/heroku_c8x6khp4');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');

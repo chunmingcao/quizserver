@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 
-console.log("###########wwwwww 1111#################");
+console.log("------------------wwwwww 1111------------");
 var app = require('../app');
 console.log("###########wwwwww 222#################");
 var debug = require('debug')('quizserver:server');

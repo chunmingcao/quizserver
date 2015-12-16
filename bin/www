@@ -4,39 +4,31 @@
  * Module dependencies.
  */
 
-console.log("------------------wwwwww 1111------------");
 var app = require('../app');
-console.log("###########wwwwww 222#################");
 var debug = require('debug')('quizserver:server');
 var http = require('http');
-console.log("###########wwwwww 333#################");
 
 /**
  * Get port from environment and store in Express.
  */
 
 var port = normalizePort(process.env.PORT || '3000');
-console.log("###########wwwwww 4444#################port:" + port);
-
 app.set('port', port);
-console.log("###########wwwwww 4444#################");
 
 /**
  * Create HTTP server.
  */
 
 var server = http.createServer(app);
-console.log("###########wwwwww 5555#################");
 
 /**
  * Listen on provided port, on all network interfaces.
  */
-console.log("###########listen 1111#################");
-console.log("###########listen port#################:" + port);
+
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
-console.log("###########listen  2222#################");
+
 /**
  * Normalize a port into a number, string, or false.
  */

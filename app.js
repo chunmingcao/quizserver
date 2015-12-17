@@ -5,7 +5,6 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-console.log("###############11111111111111111#############");
 
 var monk = require('monk');
 var db = monk('mongodb://test:test@ds033175.mongolab.com:33175/heroku_c8x6khp4');
@@ -15,7 +14,7 @@ var users = require('./routes/users');
 var qustions = require('./routes/questions');
 
 var app = express();
-console.log("##############2222222222222222222222##############");
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -27,7 +26,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-console.log("#############333333333333333333333333###############");
+
 app.use(function(req, res, next){
   req.db = db;
   next();
@@ -68,5 +67,5 @@ app.use(function(err, req, res, next) {
   });
 });
 
-console.log("###########44444444444444444444#################");
+
 module.exports = app;

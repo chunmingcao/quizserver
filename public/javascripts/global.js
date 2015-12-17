@@ -3,6 +3,7 @@ var questionlist = [];
 $('document').ready(function(){
 	populateTable();
 	$('#btnAddQuestion').on('click', addQuestion);
+	$('#btnAddQuiz').on('click', addQuiz);
 });
 
 function populateTable(){
@@ -25,27 +26,47 @@ function populateTable(){
 			$('a.linkdetail').on('click', showOptions);
 		});
 };
+//Add Quiz
+function addQuiz(event){
+	event.preventDefault();
+	var newQuiz = {"name": $('#addQuiz fieldset input#inputQuiz').val()};
+	$.ajax({
+		type:'POST',
+		data: JSON.stringify(newQuiz),
+		url: 'questions/addquiz',
+		contentType: 'application/json',
+		dataType: 'JSON'
+	}).done(function(reponse){
+		if(reponse.msg === '') {
+
+		}else{
+			alert('Error:' + reponse.msg);
+		}
+	});
+	populateTable();
+}
 //Add Qustion
 function addQuestion(event){
 	event.preventDefault();
 	var newQuestion = {
 		'question': $('#addQuestion fieldset input#inputQuestion').val(),
-		'optionA': $('#addQuestion fieldset input#inputOptionA').val(),
-		'optionB': $('#addQuestion fieldset input#inputOptionB').val(),
-		'optionC': $('#addQuestion fieldset input#inputOptionC').val(),
-		'optionD': $('#addQuestion fieldset input#inputOptionD').val(),
-		'optionE': $('#addQuestion fieldset input#inputOptionE').val(),
+		'optionss': [$('#addQuestion fieldset input#inputOptionA').val(),
+		 $('#addQuestion fieldset input#inputOptionB').val(),
+		 $('#addQuestion fieldset input#inputOptionC').val(),
+		 $('#addQuestion fieldset input#inputOptionD').val(),
+		 $('#addQuestion fieldset input#inputOptionE').val()],
 		'answer': $('#addQuestion fieldset input#inputAnswer').val()
 	};
-	alert($('#addQuestion fieldset inputQuestion'));
+	alert(newQuestion.optionss);
 	$.ajax({
 			type: 'POST',
-			data: newQuestion,
+			data: JSON.stringify(newQuestion),
 			url: 'questions/addquestion',
+			contentType: 'application/json', 
 			dataType: 'JSON'
 		}).done(function(reponse){
 			if(reponse.msg === ''){
-				alert('Success!');
+				//alert('Success!');
 			}else{
 				alert('Error:' + reponse.msg);
 			}
@@ -74,10 +95,12 @@ function showOptions(event){
 	event.preventDefault();
 	var position = questionlist.map(function(question){return question._id}).indexOf($(this).attr('rel'));
 	var question = questionlist[position];
-	$('#optionA').text(question.optionA);
-	$('#optionB').text(question.optionB);
-	$('#optionC').text(question.optionC);
-	$('#optionD').text(question.optionD);
-	$('#optionE').text(question.optionE);
-	$('#answer').text(question.answer);
+	var questiondetail = "";
+	for(var option in question.optionss){
+
+		questiondetail += '<span>' + question.optionss[option] + '</span></br>';
+	}
+	questiondetail += '<strong>Answer:</strong><span>' + question.answer + '</span>';
+	$('#questiondetail').empty();
+	$('#questiondetail').append(questiondetail);
 }

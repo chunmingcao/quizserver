@@ -9,6 +9,13 @@ router.get("/questionlist",function(req, res, next){
 	});
 });
 
+router.post("/addquiz", function(req, res){
+	var db = req.db;
+	var quizCollection = db.get('quizlist');
+	quizCollection.insert(req.body, function(err, result){
+		res.send(err == null ? {msg:''}:{msg:err});
+	});
+});
 router.post("/addquestion", function(req, res){
 	var db = req.db;
 	var qcollection = db.get('questionlist');

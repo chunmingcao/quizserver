@@ -11,23 +11,7 @@ block content
     #questionoptions
        h2 Question Options
        p
-            strong A:
-            |  <span id='optionA'></span>
-            br
-            strong B:
-            |  <span id='optionB'></span>
-            br
-            strong C:
-            |  <span id='optionC'></span>
-            br
-            strong D:
-            |  <span id='optionD'></span>
-            br
-            strong E:
-            |  <span id='optionE'></span>
-            br
-            strong Answer:
-            |  <span id='answer'></span>
+          #questiondetail
 
     // /Question Options
 
@@ -42,12 +26,19 @@ block content
                 tbody
     // /QUESTION LIST
 
+    // ADD QUIZ
+    #addQuiz
+            fieldset
+                input#inputQuiz(type='text', placeholder='Quiz Name')    
+                br
+                button#btnAddQuiz Add Quiz
+    // /ADD QUIZ
 
     // ADD QUESTION
     h2 Add Question
     #addQuestion
             fieldset
-                input#inputQuestion(type='text', placeholder='Username')
+                input#inputQuestion(type='text', placeholder='Question')
                 br
                 input#inputOptionA(type='text', placeholder='OptionA')
                 br

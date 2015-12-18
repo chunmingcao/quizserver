@@ -102,12 +102,12 @@ function showOptions(event){
 	event.preventDefault();
 	var position = questionlist.map(function(question){return question._id}).indexOf($(this).attr('rel'));
 	var question = questionlist[position];
-	var questiondetail = "";
+	var questiondetail = "<ul>";
 	for(var option in question.optionss){
 
-		questiondetail += '<span>' + question.optionss[option] + '</span></br>';
+		questiondetail += '<li>' + question.optionss[option] + '</li>';
 	}
-	questiondetail += '<strong>Answer:</strong><span>' + question.answer + '</span>';
+	questiondetail += '</ul><strong>Answer:</strong><span>' + question.answer + '</span>';
 	$('#questiondetail').empty();
 	$('#questiondetail').append(questiondetail);
 }

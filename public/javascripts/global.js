@@ -57,7 +57,6 @@ function addQuestion(event){
 		 $('#addQuestion fieldset input#inputOptionE').val()],
 		'answer': $('#addQuestion fieldset input#inputAnswer').val()
 	};
-	alert(newQuestion.optionss);
 	$.ajax({
 			type: 'POST',
 			data: JSON.stringify(newQuestion),
@@ -71,6 +70,14 @@ function addQuestion(event){
 				alert('Error:' + reponse.msg);
 			}
 		});
+
+		$('#addQuestion fieldset input#inputQuestion').val('');
+		$('#addQuestion fieldset input#inputOptionA').val('');
+		$('#addQuestion fieldset input#inputOptionB').val('');
+		$('#addQuestion fieldset input#inputOptionC').val('');
+		$('#addQuestion fieldset input#inputOptionD').val('');
+		$('#addQuestion fieldset input#inputOptionE').val('');
+		$('#addQuestion fieldset input#inputAnswer').val('');
 
 	populateTable();
 };

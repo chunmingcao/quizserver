@@ -1,24 +1,18 @@
 var express = require('express');
 var router = express.Router();
 
-router.get("/questionlist",function(req, res, next){
+router.get("/",function(req, res, next){
 	var db = req.db;
-	var qcollection = db.get('questionlist');
+	var qcollection = db.get('questions');
 	qcollection.find({},{},function(e, doc){
 		res.json(doc);
 	});
 });
 
-router.post("/addquiz", function(req, res){
+
+router.post("/", function(req, res){
 	var db = req.db;
-	var quizCollection = db.get('quizlist');
-	quizCollection.insert(req.body, function(err, result){
-		res.send(err == null ? {msg:''}:{msg:err});
-	});
-});
-router.post("/addquestion", function(req, res){
-	var db = req.db;
-	var qcollection = db.get('questionlist');
+	var qcollection = db.get('questions');
 	qcollection.insert(req.body, function(err, result){
 		res.send(
 			(err == null) ? {msg: ''} : {msg: err} 
@@ -26,9 +20,9 @@ router.post("/addquestion", function(req, res){
 	});
 });
 
-router.delete('/deletequestion/:id', function(req, res){
+router.delete('/:id', function(req, res){
 	var db = req.db;
-	var qcollection = db.get('questionlist');
+	var qcollection = db.get('questions');
 	qcollection.remove({'_id' : req.params.id}, function(err, result){
 		res.send(
 			(err == null) ? {msg: ''} : {msg: err} 
